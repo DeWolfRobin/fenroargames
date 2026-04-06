@@ -77,10 +77,10 @@ export const game: GameData = {
 		}
 	],
 	screenshots: [
-		{ src: screenshot1, alt: 'Dice? No Dice! title screen', caption: 'Title screen' },
-		{ src: screenshot2, alt: 'Dice? No Dice! modifier selection screen', caption: 'Modifier selection' },
-		{ src: screenshot3, alt: 'Dice? No Dice! lane combat gameplay', caption: 'Combat snapshot' },
-		{ src: screenshot4, alt: 'Dice? No Dice! upgrade screen', caption: 'Between-wave upgrades' }
+		{ src: screenshot1, alt: 'Dice No Dice title screen', caption: 'Title screen' },
+		{ src: screenshot2, alt: 'Dice No Dice modifier selection screen', caption: 'Modifier selection' },
+		{ src: screenshot3, alt: 'Dice No Dice lane combat gameplay', caption: 'Combat snapshot' },
+		{ src: screenshot4, alt: 'Dice No Dice upgrade screen', caption: 'Between-wave upgrades' }
 	],
 	playLink: 'https://fenroargames.itch.io/dice-no-dice'
 };
@@ -91,7 +91,7 @@ export const projects: ProjectCard[] = [
 		descriptor: 'Dice defense alpha',
 		status: 'Playable now',
 		visual: game.screenshots[2],
-		href: game.playLink
+		href: '/dice-no-dice/'
 	},
 	{
 		title: 'Re-fraction',
