@@ -1,0 +1,235 @@
+---
+import { game, schema, socialGroups, studio } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+import SiteFooter from '../components/site/layout/SiteFooter.astro';
+import SiteHeader from '../components/site/layout/SiteHeader.astro';
+import OptimizedImage from '../components/site/shared/OptimizedImage.astro';
+import ButtonLink from '../components/site/shared/ButtonLink.astro';
+import Pill from '../components/site/shared/Pill.astro';
+import SectionHeading from '../components/site/shared/SectionHeading.astro';
+import Surface from '../components/site/shared/Surface.astro';
+import { sectionContainerClass } from '../components/site/shared/classes';
+
+const gamePageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...schema['@graph'],
+    {
+      '@type': 'WebPage',
+      name: 'Dice? No Dice! | Dice No Dice',
+      url: 'https://fenroar.games/dice-no-dice/',
+      description:
+        'Dice? No Dice!, also searchable as Dice No Dice, is a playable alpha roguelike dice defense game where risky rolls and lane pressure keep every run tense.',
+      keywords: [
+        'Dice? No Dice!',
+        'Dice? No Dice! game',
+        'Dice? No Dice! FenroarGames',
+        'dice no dice',
+        'dice no dice game',
+        'dice no dice roguelike',
+        'dice no dice fenroargames'
+      ],
+      about: {
+        '@type': 'VideoGame',
+        name: game.title,
+        alternateName: 'Dice No Dice'
+      }
+    }
+  ]
+};
+
+const pageTitle = 'Dice? No Dice! | Roguelike Dice Defense Game by FenroarGames';
+const pageDescription =
+  'Dice? No Dice! is a playable alpha roguelike by FenroarGames with tense lane defense, risky rolls, and runs that keep changing on you.';
+
+const seoKeywords = [
+  'Dice? No Dice!',
+  'Dice? No Dice! game',
+  'Dice? No Dice! FenroarGames',
+  'dice no dice',
+  'dice no dice game',
+  'dice no dice roguelike',
+  'dice no dice fenroargames'
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://fenroar.games/dice-no-dice/"
+  keywords={seoKeywords}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(gamePageSchema)} />
+
+  <div class="relative isolate overflow-hidden bg-[#0b0b0f] text-white">
+    <div class="scroll-progress pointer-events-none fixed inset-x-0 top-0 z-50 h-1 origin-left bg-[linear-gradient(90deg,#48c4ff,#d4af37)]"></div>
+    <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(72,196,255,0.14),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(212,175,55,0.14),transparent_22%),linear-gradient(180deg,#0b0b0f_0%,#101219_100%)]"></div>
+      <div class="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:72px_72px]"></div>
+    </div>
+
+    <div class="mx-auto w-[min(1280px,calc(100%-24px))] py-4 sm:w-[min(1280px,calc(100%-40px))] sm:py-6">
+      <SiteHeader studio={studio} />
+
+      <main class="relative z-10">
+        <section id="top" class="container mx-auto max-w-6xl px-4 py-18 sm:px-6 sm:py-24">
+          <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-center">
+            <div class="space-y-6">
+              <div class="flex flex-wrap gap-3">
+                <Pill invert>{game.status}</Pill>
+                <Pill invert>Dice? No Dice!</Pill>
+              </div>
+
+              <div class="space-y-4">
+                <p class="text-sm font-black uppercase tracking-[0.36em] text-cyan-300">Playable Alpha</p>
+                <h1 class="max-w-4xl text-4xl font-black leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                  Dice? No Dice!
+                </h1>
+                <p class="max-w-3xl text-lg leading-8 text-zinc-300">
+                  If you like runs that go from calm to chaotic in a heartbeat, <strong>Dice? No Dice!</strong> is built
+                  for that feeling. Jump into a lane defense roguelike where every roll can save a run or blow it wide
+                  open.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <ButtonLink href={game.playLink}>Play on itch.io</ButtonLink>
+                <ButtonLink href="https://fenroar.games/#featured-game" variant="secondary">Back to Studio Site</ButtonLink>
+              </div>
+            </div>
+
+            <Surface tone="dark" class="hero-card relative overflow-hidden border-white/12 p-3 sm:p-4">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_32%),radial-gradient(circle_at_100%_50%,rgba(72,196,255,0.16),transparent_30%)]"></div>
+              <div class="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#090b10]">
+                <OptimizedImage
+                  src={game.screenshots[2].src}
+                  alt={game.screenshots[2].alt}
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                  widths={[720, 1080, 1440]}
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  quality={84}
+                  class="aspect-[16/10] w-full object-cover opacity-92"
+                />
+                <div class="absolute inset-x-3 bottom-3 rounded-[1rem] border border-white/10 bg-black/58 p-3 backdrop-blur sm:inset-x-4 sm:bottom-4 sm:p-4">
+                  <p class="text-[0.72rem] font-black uppercase tracking-[0.32em] text-[#d4af37]">Dice? No Dice!</p>
+                  <p class="mt-2 text-xl font-black tracking-tight text-white sm:text-3xl">{game.subtitle}</p>
+                </div>
+              </div>
+            </Surface>
+          </div>
+        </section>
+
+        <section class={sectionContainerClass}>
+          <SectionHeading
+            eyebrow="About The Game"
+            title="Fast to read. Hard to put down."
+            text="Dice? No Dice! is easy to understand at a glance, but every wave asks for smarter positioning, better timing, and a little courage."
+            invert
+          />
+
+          <div class="mt-12 grid gap-5 lg:grid-cols-3">
+            <Surface class="p-6">
+              <p class="text-xs font-black uppercase tracking-[0.28em] text-cyan-300">Every Roll Matters</p>
+              <p class="mt-4 text-2xl font-black tracking-tight text-white">Good rolls feel amazing. Bad rolls force you to improvise.</p>
+            </Surface>
+            <Surface class="p-6">
+              <p class="text-xs font-black uppercase tracking-[0.28em] text-cyan-300">Hold The Lanes</p>
+              <p class="mt-4 text-2xl font-black tracking-tight text-white">
+                Set up your defenders, read the pressure points, and stop each lane from collapsing.
+              </p>
+            </Surface>
+            <Surface class="p-6">
+              <p class="text-xs font-black uppercase tracking-[0.28em] text-cyan-300">Playable Right Now</p>
+              <p class="mt-4 text-2xl font-black tracking-tight text-white">
+                The alpha is already live, so you can get in early and feel where the game is heading.
+              </p>
+            </Surface>
+          </div>
+        </section>
+
+        <section class={sectionContainerClass}>
+          <div class="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+            <div class="space-y-5">
+              <SectionHeading
+                eyebrow="What To Expect"
+                title="A run-based defense game that keeps pushing back"
+                text="You are constantly making small calls under pressure: where to place units, which lane to stabilize first, and when to gamble on a stronger build."
+                invert
+              />
+              <p class="max-w-2xl text-base leading-8 text-zinc-300">
+                {game.alphaNote} Even now, the fun is already there: tense waves, shifting priorities, and those
+                moments where one lucky or unlucky roll changes the whole story of a run.
+              </p>
+            </div>
+
+            <div class="grid gap-4">
+              {game.featureSteps.map((step) => (
+                <Surface class="p-5">
+                  <p class="text-xs font-black uppercase tracking-[0.28em] text-[#d4af37]">{step.label}</p>
+                  <h2 class="mt-3 text-3xl font-black tracking-tight text-white">{step.title}</h2>
+                  <p class="mt-3 text-base leading-7 text-zinc-300">{step.description}</p>
+                </Surface>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class={sectionContainerClass}>
+          <SectionHeading
+            eyebrow="Screenshots"
+            title="A look at the current alpha"
+            text="Here is what Dice? No Dice! looks like right now, from setup to upgrades to the moments when the board starts getting dangerous."
+            invert
+          />
+
+          <div class="mt-12 grid gap-5 md:grid-cols-2">
+            {game.screenshots.map((image, index) => (
+              <Surface class="overflow-hidden p-3">
+                <OptimizedImage
+                  src={image.src}
+                  alt={image.alt}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  widths={[640, 960, 1280]}
+                  sizes="(min-width: 768px) 48vw, 100vw"
+                  quality={82}
+                  class="aspect-[16/10] w-full rounded-[1.2rem] object-cover"
+                />
+                <p class="px-2 pb-2 pt-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/72">{image.caption}</p>
+              </Surface>
+            ))}
+          </div>
+        </section>
+
+        <section class={sectionContainerClass}>
+          <Surface
+            tone="dark"
+            class="overflow-hidden border-[#d4af37]/18 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(72,196,255,0.16),transparent_35%),linear-gradient(180deg,#0b0b0f,#12131a)] p-6 sm:p-10"
+          >
+            <h2 class="max-w-4xl text-4xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
+              Ready for one more run?
+              <br />
+              Play Dice? No Dice!
+            </h2>
+            <div class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+              <ButtonLink href={game.playLink}>Play / Download</ButtonLink>
+              <ButtonLink href="https://fenroar.games/" variant="secondary">Visit FenroarGames</ButtonLink>
+            </div>
+          </Surface>
+        </section>
+      </main>
+
+      <SiteFooter studio={studio} socialGroups={socialGroups} />
+    </div>
+
+    <a
+      href="#top"
+      class="back-to-top fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-black/55 text-lg font-black text-white shadow-[0_18px_45px_rgba(0,0,0,0.34)] backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/35 hover:bg-black/72"
+      aria-label="Back to top"
+    >
+      &uarr;
+    </a>
+  </div>
+</Layout>

@@ -5,9 +5,11 @@ import '../styles/global.css';
 interface Props {
 	title: string;
 	description: string;
+	canonical?: string;
+	keywords?: string[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonical, keywords = [] } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,6 +21,7 @@ const { title, description } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		{keywords.length ? <meta name="keywords" content={keywords.join(', ')} /> : null}
 		<meta name="robots" content="index, follow, max-image-preview:large" />
 		<meta name="author" content="FenroarGames" />
 		<meta name="theme-color" content="#07111f" />
@@ -26,12 +29,14 @@ const { title, description } = Astro.props;
 		<meta property="og:site_name" content="FenroarGames" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		{canonical ? <meta property="og:url" content={canonical} /> : null}
 		<meta property="og:image" content={game.screenshots[2].src.src} />
-		<meta property="og:image:alt" content="Dice? No Dice! gameplay screenshot" />
+		<meta property="og:image:alt" content="Dice No Dice gameplay screenshot" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={game.screenshots[2].src.src} />
+		{canonical ? <link rel="canonical" href={canonical} /> : null}
 		<link rel="icon" type="image/png" href={studio.logo.src} />
 		<title>{title}</title>
 	</head>
