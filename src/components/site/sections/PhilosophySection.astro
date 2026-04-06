@@ -1,0 +1,28 @@
+---
+import Reveal from '../shared/Reveal.astro';
+import SectionHeading from '../shared/SectionHeading.astro';
+import { sectionContainerClass } from '../shared/classes';
+
+interface Props {
+  points: string[];
+}
+
+const { points } = Astro.props;
+---
+
+<section id="philosophy" class={sectionContainerClass}>
+  <Reveal>
+    <SectionHeading eyebrow="Design Philosophy" title="Built for readable tension" invert />
+  </Reveal>
+
+  <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+    {points.map((point, index) => (
+      <Reveal delay={index * 60} class="h-full">
+        <div class="flex h-full flex-col rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 transition-all duration-300 hover:scale-105 hover:border-cyan-300/30">
+          <p class="text-xs font-black uppercase tracking-[0.28em] text-cyan-300">0{index + 1}</p>
+          <p class="mt-6 flex-1 text-2xl font-black tracking-tight text-white">{point}</p>
+        </div>
+      </Reveal>
+    ))}
+  </div>
+</section>
