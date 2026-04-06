@@ -42,6 +42,7 @@ const { title, description } = Astro.props;
 				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 				const revealTargets = Array.from(document.querySelectorAll('.reveal-block'));
 				const backToTopButton = document.querySelector('.back-to-top');
+				const scrollProgress = document.querySelector('.scroll-progress');
 
 				if (backToTopButton) {
 					const toggleBackToTop = () => {
@@ -50,6 +51,25 @@ const { title, description } = Astro.props;
 
 					toggleBackToTop();
 					window.addEventListener('scroll', toggleBackToTop, { passive: true });
+				}
+
+				if (scrollProgress) {
+					const supportsScrollTimeline =
+						typeof CSS !== 'undefined' &&
+						CSS.supports &&
+						CSS.supports('animation-timeline: scroll(root block)');
+
+					if (!supportsScrollTimeline) {
+						const updateScrollProgress = () => {
+							const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+							const progress = maxScroll <= 0 ? 0 : window.scrollY / maxScroll;
+							scrollProgress.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+						};
+
+						updateScrollProgress();
+						window.addEventListener('scroll', updateScrollProgress, { passive: true });
+						window.addEventListener('resize', updateScrollProgress, { passive: true });
+					}
 				}
 
 				if (!revealTargets.length) return;

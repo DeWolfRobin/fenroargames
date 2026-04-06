@@ -22,14 +22,14 @@ const { projects } = Astro.props;
     />
   </Reveal>
 
-  <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+  <div class="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
     {projects.map((project, index) => (
       <Reveal delay={index * 70} class="h-full">
         <a
           href={project.href ?? '#'}
           class:list={[
             interactiveCardClass,
-            'group flex h-full flex-col p-4 hover:scale-105 hover:bg-white/[0.06] hover:shadow-[0_24px_80px_rgba(0,0,0,0.34)]'
+            'group flex h-full flex-col p-3 sm:p-4 hover:scale-105 hover:bg-white/[0.06] hover:shadow-[0_24px_80px_rgba(0,0,0,0.34)]'
           ]}
         >
           <div class="relative overflow-hidden rounded-[1.2rem] border border-white/8 bg-[#090b10]">
@@ -50,9 +50,9 @@ const { projects } = Astro.props;
             </div>
           </div>
 
-          <div class="mt-4 flex min-h-[7.5rem] flex-1 flex-col justify-start space-y-2">
+          <div class="mt-4 flex min-h-[6.5rem] flex-1 flex-col justify-start space-y-2 sm:min-h-[7.5rem]">
             <p class="text-xs font-black uppercase tracking-[0.28em] text-[#d4af37]">{project.descriptor}</p>
-            <h3 class="text-3xl font-black tracking-tight text-white">{project.title}</h3>
+            <h3 class="text-2xl font-black tracking-tight text-white sm:text-3xl">{project.title}</h3>
           </div>
         </a>
       </Reveal>

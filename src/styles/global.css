@@ -86,6 +86,13 @@ body {
   }
 }
 
+@supports not (animation-timeline: scroll(root block)) {
+  .scroll-progress {
+    transform: scaleX(0);
+    will-change: transform;
+  }
+}
+
 @keyframes scroll-progress {
   from {
     transform: scaleX(0);

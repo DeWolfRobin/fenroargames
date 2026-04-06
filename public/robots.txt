@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://fenroar.games/sitemap.xml

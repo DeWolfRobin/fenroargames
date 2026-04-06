@@ -18,30 +18,30 @@ const primaryPreview = game.screenshots[2];
 
 <section id="top" class="relative min-h-screen scroll-mt-28 overflow-hidden">
   <div class="hero-parallax pointer-events-none absolute inset-0 opacity-70"></div>
-  <div class="container relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-24 text-center">
+  <div class="container relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6 sm:py-24">
     <Reveal class="space-y-8" delay={40}>
 
       <div class="space-y-4">
-        <h1 class="mx-auto max-w-5xl text-5xl font-black leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-7xl">
+        <h1 class="mx-auto max-w-5xl text-4xl font-black leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl">
           {studio.heroTitle}
         </h1>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-3">
+      <div class="flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
         <ButtonLink href="https://discord.gg/vPKjWEBFBq">Join Discord</ButtonLink>
         <ButtonLink href={game.playLink} variant="secondary">Play on itch.io</ButtonLink>
         <ButtonLink href="https://www.youtube.com/@FenroarGames" variant="secondary">Follow Dev</ButtonLink>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-3">
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
         {gameTags.map((tag) => (
           <Pill invert>{tag}</Pill>
         ))}
       </div>
     </Reveal>
 
-    <Reveal class="mt-12 w-full max-w-4xl" delay={140}>
-      <Surface tone="dark" class="hero-card relative overflow-hidden border-white/12 p-4">
+    <Reveal class="mt-10 w-full max-w-4xl sm:mt-12" delay={140}>
+      <Surface tone="dark" class="hero-card relative overflow-hidden border-white/12 p-3 sm:p-4">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_32%),radial-gradient(circle_at_100%_50%,rgba(72,196,255,0.16),transparent_30%)]"></div>
         <div class="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#090b10]">
           <OptimizedImage
@@ -55,9 +55,9 @@ const primaryPreview = game.screenshots[2];
             quality={84}
             class="aspect-[16/8.8] w-full object-cover opacity-92"
           />
-          <div class="absolute inset-x-4 bottom-4 mx-auto max-w-2xl rounded-[1rem] border border-white/10 bg-black/58 p-4 backdrop-blur">
+          <div class="absolute inset-x-3 bottom-3 mx-auto max-w-2xl rounded-[1rem] border border-white/10 bg-black/58 p-3 backdrop-blur sm:inset-x-4 sm:bottom-4 sm:p-4">
             <p class="text-[0.72rem] font-black uppercase tracking-[0.32em] text-[#d4af37]">{game.title}</p>
-            <p class="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">{studio.tagline}</p>
+            <p class="mt-2 text-xl font-black tracking-tight text-white sm:text-3xl">{studio.tagline}</p>
           </div>
         </div>
       </Surface>
