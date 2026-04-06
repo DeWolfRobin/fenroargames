@@ -4,6 +4,8 @@ export const navItems = [
   { href: '#projects', label: 'Projects' },
   { href: '#philosophy', label: 'Philosophy' },
   { href: '#process', label: 'Process' }
-];
+] as const;
 
-export const gameTags = ['Roguelike', 'Strategy', 'Tower Defense', 'Singleplayer'];
+export const gameTags = ['Roguelike', 'Strategy', 'Tower Defense', 'Singleplayer'] as const;
+
+export const featuredSocialLabels = new Set(['Discord', 'itch.io', 'YouTube', 'Patreon']);

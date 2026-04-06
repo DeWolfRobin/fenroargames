@@ -1,17 +1,22 @@
 ---
-import { Button, Pill, Reveal, SectionHeading, Surface } from './SitePrimitives';
-import OptimizedImage from './OptimizedImage.astro';
-import type { GameData } from './types';
+import OptimizedImage from '../shared/OptimizedImage.astro';
+import ButtonLink from '../shared/ButtonLink.astro';
+import Pill from '../shared/Pill.astro';
+import Reveal from '../shared/Reveal.astro';
+import SectionHeading from '../shared/SectionHeading.astro';
+import Surface from '../shared/Surface.astro';
+import { interactiveCardClass, sectionContainerClass } from '../shared/classes';
+import type { GameData } from '../shared/types';
 
 interface Props {
   game: GameData;
 }
 
 const { game } = Astro.props;
-const stepVisuals = [game.screenshots[2], game.screenshots[3], game.screenshots[0], game.screenshots[1]];
+const featureVisuals = [game.screenshots[2], game.screenshots[3], game.screenshots[0], game.screenshots[1]];
 ---
 
-<section id="featured-game" class="section-chunk container mx-auto max-w-6xl px-6 py-24">
+<section id="featured-game" class={sectionContainerClass}>
   <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
     <div class="lg:sticky lg:top-28 lg:self-start">
       <Reveal>
@@ -21,7 +26,7 @@ const stepVisuals = [game.screenshots[2], game.screenshots[3], game.screenshots[
       <Reveal delay={80}>
         <Surface
           tone="dark"
-          className="mt-8 overflow-hidden border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-4"
+          class="mt-8 overflow-hidden border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-4"
         >
           <div class="relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#090b10]">
             <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(212,175,55,0.16),transparent_35%),radial-gradient(circle_at_80%_20%,rgba(72,196,255,0.18),transparent_28%)]"></div>
@@ -48,21 +53,19 @@ const stepVisuals = [game.screenshots[2], game.screenshots[3], game.screenshots[
         </Surface>
       </Reveal>
 
-      <Reveal delay={140} className="mt-6 flex flex-wrap gap-3">
-        <Button href={game.playLink}>Play on itch.io</Button>
-        <Button href="#projects" variant="secondary">
-          See other projects
-        </Button>
+      <Reveal delay={140} class="mt-6 flex flex-wrap gap-3">
+        <ButtonLink href={game.playLink}>Play on itch.io</ButtonLink>
+        <ButtonLink href="#projects" variant="secondary">See other projects</ButtonLink>
       </Reveal>
     </div>
 
     <div class="space-y-5">
       {game.featureSteps.map((step, index) => {
-        const visual = stepVisuals[index];
+        const visual = featureVisuals[index];
 
         return (
           <Reveal delay={index * 70}>
-            <div class="grid gap-4 rounded-[1.7rem] border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:scale-[1.01] hover:border-[#d4af37]/35 hover:shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:p-5">
+            <div class:list={[interactiveCardClass, 'grid gap-4 p-4 hover:scale-[1.01] sm:p-5']}>
               <div class="grid gap-4 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center">
                 <div class="relative overflow-hidden rounded-[1.2rem] border border-white/8 bg-[#0a0d12]">
                   <OptimizedImage

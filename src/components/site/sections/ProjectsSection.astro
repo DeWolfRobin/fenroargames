@@ -1,7 +1,9 @@
 ---
-import { Reveal, SectionHeading } from './SitePrimitives';
-import OptimizedImage from './OptimizedImage.astro';
-import type { ProjectCard } from './types';
+import OptimizedImage from '../shared/OptimizedImage.astro';
+import Reveal from '../shared/Reveal.astro';
+import SectionHeading from '../shared/SectionHeading.astro';
+import { interactiveCardClass, sectionContainerClass } from '../shared/classes';
+import type { ProjectCard } from '../shared/types';
 
 interface Props {
   projects: ProjectCard[];
@@ -10,17 +12,25 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<section id="projects" class="section-chunk container mx-auto max-w-6xl px-6 py-24">
+<section id="projects" class={sectionContainerClass}>
   <Reveal>
-    <SectionHeading eyebrow="Other Projects" title="Multiple worlds. Same system-first DNA." invert text="Current game plus future directions, without overexplaining." />
+    <SectionHeading
+      eyebrow="Other Projects"
+      title="Multiple worlds. Same system-first DNA."
+      invert
+      text="Current game plus future directions, without overexplaining."
+    />
   </Reveal>
 
   <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
     {projects.map((project, index) => (
-      <Reveal delay={index * 70}>
+      <Reveal delay={index * 70} class="h-full">
         <a
           href={project.href ?? '#'}
-          class="group block rounded-[1.7rem] border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:scale-105 hover:border-[#d4af37]/35 hover:bg-white/[0.06] hover:shadow-[0_24px_80px_rgba(0,0,0,0.34)]"
+          class:list={[
+            interactiveCardClass,
+            'group flex h-full flex-col p-4 hover:scale-105 hover:bg-white/[0.06] hover:shadow-[0_24px_80px_rgba(0,0,0,0.34)]'
+          ]}
         >
           <div class="relative overflow-hidden rounded-[1.2rem] border border-white/8 bg-[#090b10]">
             <OptimizedImage
@@ -40,7 +50,7 @@ const { projects } = Astro.props;
             </div>
           </div>
 
-          <div class="mt-4 space-y-2">
+          <div class="mt-4 flex min-h-[7.5rem] flex-1 flex-col justify-start space-y-2">
             <p class="text-xs font-black uppercase tracking-[0.28em] text-[#d4af37]">{project.descriptor}</p>
             <h3 class="text-3xl font-black tracking-tight text-white">{project.title}</h3>
           </div>

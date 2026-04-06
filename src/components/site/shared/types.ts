@@ -10,6 +10,12 @@ export type SocialGroup = {
   links: LinkItem[];
 };
 
+export type Screenshot = {
+  src: ImageMetadata;
+  alt: string;
+  caption: string;
+};
+
 export type ProjectCard = {
   title: string;
   descriptor: string;
@@ -26,17 +32,11 @@ export type FeatureStep = {
   visualNote: string;
 };
 
-export type Screenshot = {
-  src: ImageMetadata;
-  alt: string;
-  caption: string;
-};
-
 export type StudioData = {
   title: string;
   tagline: string;
+  description: string;
   heroTitle: string;
-  heroNotes: string[];
   identityStatements: string[];
   philosophy: string[];
   process: string[];
@@ -47,11 +47,8 @@ export type GameData = {
   title: string;
   subtitle: string;
   status: string;
-  oneLiner: string;
   shortDescription: string;
   alphaNote: string;
-  fullDescription: string[];
-  features: string[];
   featureSteps: FeatureStep[];
   screenshots: Screenshot[];
   playLink: string;

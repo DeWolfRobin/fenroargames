@@ -1,14 +1,14 @@
 ---
-import { CTASection } from './CTASection';
-import FeaturedGameSection from './FeaturedGameSection.astro';
-import HeroSection from './HeroSection.astro';
-import { IdentitySection } from './IdentitySection';
-import { PhilosophySection } from './PhilosophySection';
-import { ProcessSection } from './ProcessSection';
-import ProjectsSection from './ProjectsSection.astro';
 import SiteFooter from './SiteFooter.astro';
 import SiteHeader from './SiteHeader.astro';
-import type { GameData, ProjectCard, SocialGroup, StudioData } from './types';
+import CTASection from '../sections/CTASection.astro';
+import FeaturedGameSection from '../sections/FeaturedGameSection.astro';
+import HeroSection from '../sections/HeroSection.astro';
+import IdentitySection from '../sections/IdentitySection.astro';
+import PhilosophySection from '../sections/PhilosophySection.astro';
+import ProcessSection from '../sections/ProcessSection.astro';
+import ProjectsSection from '../sections/ProjectsSection.astro';
+import type { GameData, ProjectCard, SocialGroup, StudioData } from '../shared/types';
 
 interface Props {
   studio: StudioData;
@@ -18,7 +18,8 @@ interface Props {
 }
 
 const { studio, game, projects, socialGroups } = Astro.props;
-const discordLink = socialGroups.flatMap((group) => group.links).find((link) => link.label === 'Discord')?.href ?? game.playLink;
+const allLinks = socialGroups.flatMap((group) => group.links);
+const discordLink = allLinks.find((link) => link.label === 'Discord')?.href ?? game.playLink;
 ---
 
 <div class="relative isolate overflow-hidden bg-[#0b0b0f] text-white">
@@ -45,4 +46,12 @@ const discordLink = socialGroups.flatMap((group) => group.links).find((link) => 
 
     <SiteFooter studio={studio} socialGroups={socialGroups} />
   </div>
+
+  <a
+    href="#top"
+    class="back-to-top fixed bottom-5 right-5 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-black/55 text-lg font-black text-white shadow-[0_18px_45px_rgba(0,0,0,0.34)] backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/35 hover:bg-black/72"
+    aria-label="Back to top"
+  >
+    ↑
+  </a>
 </div>

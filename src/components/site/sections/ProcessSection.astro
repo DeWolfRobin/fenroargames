@@ -1,0 +1,53 @@
+---
+import Reveal from '../shared/Reveal.astro';
+import SectionHeading from '../shared/SectionHeading.astro';
+import { sectionContainerClass } from '../shared/classes';
+import { featuredSocialLabels } from '../shared/constants';
+import type { SocialGroup } from '../shared/types';
+
+interface Props {
+  process: string[];
+  socialGroups: SocialGroup[];
+}
+
+const { process, socialGroups } = Astro.props;
+const primaryLinks = socialGroups.flatMap((group) => group.links).filter((link) => featuredSocialLabels.has(link.label));
+---
+
+<section id="process" class={sectionContainerClass}>
+  <div class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+    <Reveal>
+      <SectionHeading
+        eyebrow="Development Process"
+        title="Built in the open. Improved in public."
+        invert
+        text="Small, visible steps that give players something real to react to."
+      />
+    </Reveal>
+
+    <div class="grid gap-4">
+      {process.map((item, index) => (
+        <Reveal delay={index * 60}>
+          <div class="rounded-[1.5rem] border border-white/10 bg-white/[0.04] px-5 py-5">
+            <p class="text-2xl font-black tracking-tight text-white">{item}</p>
+          </div>
+        </Reveal>
+      ))}
+
+      <Reveal delay={220}>
+        <div class="grid gap-3 sm:grid-cols-2">
+          {primaryLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-[1.2rem] border border-white/10 bg-black/20 px-4 py-4 text-base font-bold text-white transition-all duration-300 hover:scale-[1.03] hover:border-cyan-300/35 hover:bg-white/[0.06]"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>

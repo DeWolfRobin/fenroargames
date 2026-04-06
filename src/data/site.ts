@@ -3,21 +3,22 @@ import screenshot1 from '../assets/site/1.png';
 import screenshot2 from '../assets/site/2.png';
 import screenshot3 from '../assets/site/3.png';
 import screenshot4 from '../assets/site/4.png';
+import projectPlaceholder from '../assets/site/project-placeholder.svg';
+import type { GameData, ProjectCard, SocialGroup, StudioData } from '../components/site/shared/types';
 
-export const studio = {
+export const studio: StudioData = {
 	title: 'FenroarGames',
 	tagline: 'Systems built to bite back',
 	description:
 		'FenroarGames is an indie game studio focused on strategy games with self-composed music and collaborative art production. Discover Dice? No Dice!, a playable alpha roguelike dice defense game.',
 	heroTitle: 'Strategy games with pressure, replayability, and authored feel.',
-	heroNotes: ['Play the alpha', 'Join the Discord', 'Follow development'],
 	identityStatements: ['System-driven games', 'Replayability first', 'Design through mechanics'],
 	philosophy: ['Mechanics over fluff', 'Clarity over complexity', 'Systems that evolve', 'Readable pressure, meaningful risk'],
-	process: ['Public development', 'Community-driven feedback', 'Iterative releases', 'Music and game feel developed together'],
+	process: ['Public development', 'Community-driven feedback', 'Iterative releases', 'Music and game are developed together'],
 	logo
 };
 
-export const socialGroups = [
+export const socialGroups: SocialGroup[] = [
 	{
 		title: 'Watch and follow',
 		links: [
@@ -37,29 +38,14 @@ export const socialGroups = [
 	}
 ];
 
-export const game = {
+export const game: GameData = {
 	title: 'Dice? No Dice!',
 	subtitle: 'Roguelike Dice Defense Game',
 	status: 'Playable Alpha',
-	oneLiner:
-		'A roguelike tower defense game where dice rolls decide your strategy and every run plays differently.',
 	shortDescription:
 		'Dice? No Dice! is a roguelike dice defense game where positioning, upgrades, and risky rolls shape every run. Choose your lane, adapt to enemy paths, and survive increasingly difficult waves.',
 	alphaNote:
 		'The current build is a playable alpha. The art and music are still temporary while the final visual direction and original soundtrack continue to take shape.',
-	fullDescription: [
-		'Dice? No Dice! is a strategic roguelike tower defense game built around risk, adaptation, and decision-making.',
-		'Enemies approach through multiple paths, and it is up to you to position your defenders wisely. Each class has unique strengths and limitations, with some dominating a single lane while others control the entire field.',
-		'Between waves, you will upgrade your build using dice-based mechanics, gaining advantages, taking risks, and shaping your strategy for the run ahead. No two runs are the same, and every decision matters.'
-	],
-	features: [
-		'Dice-driven upgrades and mechanics',
-		'Strategic lane-based defense system',
-		'Multiple defender classes including Warrior, Archer, and Mage',
-		'Procedural runs with high replayability',
-		'Risk versus reward decision-making',
-		'Increasing difficulty with varied enemy waves'
-	],
 	featureSteps: [
 		{
 			label: 'Core loop',
@@ -99,7 +85,7 @@ export const game = {
 	playLink: 'https://fenroargames.itch.io/dice-no-dice'
 };
 
-export const projects = [
+export const projects: ProjectCard[] = [
 	{
 		title: 'Dice? No Dice!',
 		descriptor: 'Dice defense alpha',
@@ -108,18 +94,29 @@ export const projects = [
 		href: game.playLink
 	},
 	{
-		title: 'Project Ember Path',
-		descriptor: 'Tactical prototype',
-		status: 'In exploration',
-		visual: game.screenshots[1]
+		title: 'Re-fraction',
+		descriptor: 'Story complete, seeking artists',
+		status: 'Concept phase',
+		visual: {
+			src: projectPlaceholder,
+			alt: 'Placeholder visual for Re-fraction',
+			caption: 'Concept phase placeholder'
+		},
+		href: 'https://fenroargames.itch.io/re-fraction'
 	},
 	{
-		title: 'Project Hollow Signal',
-		descriptor: 'System-first concept',
-		status: 'Early design',
-		visual: game.screenshots[3]
+		title: 'Next Game Placeholder',
+		descriptor: 'No third game announced yet',
+		status: 'Placeholder',
+		visual: {
+			src: projectPlaceholder,
+			alt: 'Placeholder visual for the next FenroarGames project',
+			caption: 'Future project placeholder'
+		}
 	}
 ] as const;
+
+const allSocialLinks = socialGroups.flatMap((group) => group.links.map((link) => link.href));
 
 export const schema = {
 	'@context': 'https://schema.org',
@@ -128,7 +125,7 @@ export const schema = {
 			'@type': 'Organization',
 			name: studio.title,
 			logo: studio.logo.src,
-			sameAs: socialGroups.flatMap((group) => group.links.map((link) => link.href))
+			sameAs: allSocialLinks
 		},
 		{
 			'@type': 'VideoGame',

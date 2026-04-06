@@ -1,7 +1,7 @@
 ---
-import { Reveal } from './SitePrimitives';
-import OptimizedImage from './OptimizedImage.astro';
-import type { SocialGroup, StudioData } from './types';
+import OptimizedImage from '../shared/OptimizedImage.astro';
+import Reveal from '../shared/Reveal.astro';
+import type { SocialGroup, StudioData } from '../shared/types';
 
 interface Props {
   studio: StudioData;
@@ -9,10 +9,6 @@ interface Props {
 }
 
 const { studio, socialGroups } = Astro.props;
-const groupedLinks = socialGroups.map((group) => ({
-  title: group.title,
-  links: group.links
-}));
 ---
 
 <Reveal delay={120}>
@@ -20,15 +16,15 @@ const groupedLinks = socialGroups.map((group) => ({
     <div class="grid gap-10 border-t border-white/8 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
       <div class="space-y-5">
         <div class="flex items-center gap-4">
-        <OptimizedImage
-          src={studio.logo}
-          alt={`${studio.title} logo`}
-          loading="lazy"
-          decoding="async"
-          widths={[56, 96]}
-          sizes="56px"
-          class="h-14 w-14 rounded-xl object-contain"
-        />
+          <OptimizedImage
+            src={studio.logo}
+            alt={`${studio.title} logo`}
+            loading="lazy"
+            decoding="async"
+            widths={[56, 96]}
+            sizes="56px"
+            class="h-14 w-14 rounded-xl object-contain"
+          />
           <div>
             <p class="text-2xl font-black tracking-tight text-white">FenroarGames</p>
             <p class="mt-1 text-sm font-semibold uppercase tracking-[0.22em] text-white/42">{studio.tagline}</p>
@@ -40,7 +36,7 @@ const groupedLinks = socialGroups.map((group) => ({
       </div>
 
       <div class="grid gap-8 sm:grid-cols-2">
-        {groupedLinks.map((group) => (
+        {socialGroups.map((group) => (
           <div class="space-y-4">
             <p class="text-[0.72rem] font-black uppercase tracking-[0.28em] text-cyan-300">{group.title}</p>
             <div class="grid gap-3">
