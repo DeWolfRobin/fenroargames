@@ -1,0 +1,48 @@
+---
+import { CTASection } from './CTASection';
+import FeaturedGameSection from './FeaturedGameSection.astro';
+import HeroSection from './HeroSection.astro';
+import { IdentitySection } from './IdentitySection';
+import { PhilosophySection } from './PhilosophySection';
+import { ProcessSection } from './ProcessSection';
+import ProjectsSection from './ProjectsSection.astro';
+import SiteFooter from './SiteFooter.astro';
+import SiteHeader from './SiteHeader.astro';
+import type { GameData, ProjectCard, SocialGroup, StudioData } from './types';
+
+interface Props {
+  studio: StudioData;
+  game: GameData;
+  projects: ProjectCard[];
+  socialGroups: SocialGroup[];
+}
+
+const { studio, game, projects, socialGroups } = Astro.props;
+const discordLink = socialGroups.flatMap((group) => group.links).find((link) => link.label === 'Discord')?.href ?? game.playLink;
+---
+
+<div class="relative isolate overflow-hidden bg-[#0b0b0f] text-white">
+  <div class="scroll-progress pointer-events-none fixed inset-x-0 top-0 z-50 h-1 origin-left bg-[linear-gradient(90deg,#48c4ff,#d4af37)]"></div>
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(72,196,255,0.14),transparent_24%),radial-gradient(circle_at_80%_20%,rgba(212,175,55,0.14),transparent_22%),linear-gradient(180deg,#0b0b0f_0%,#101219_100%)]"></div>
+    <div class="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:72px_72px]"></div>
+    <div class="absolute left-[8%] top-32 h-64 w-64 rounded-full bg-cyan-300/10 blur-3xl"></div>
+    <div class="absolute right-[10%] top-[22rem] h-72 w-72 rounded-full bg-[#d4af37]/10 blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto w-[min(1280px,calc(100%-24px))] py-4 sm:w-[min(1280px,calc(100%-40px))] sm:py-6">
+    <SiteHeader studio={studio} />
+
+    <main class="relative z-10">
+      <HeroSection studio={studio} game={game} />
+      <IdentitySection statements={studio.identityStatements} />
+      <FeaturedGameSection game={game} />
+      <ProjectsSection projects={projects} />
+      <PhilosophySection points={studio.philosophy} />
+      <ProcessSection process={studio.process} socialGroups={socialGroups} />
+      <CTASection playLink={game.playLink} discordLink={discordLink} />
+    </main>
+
+    <SiteFooter studio={studio} socialGroups={socialGroups} />
+  </div>
+</div>

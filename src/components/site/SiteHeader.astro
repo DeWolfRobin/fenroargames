@@ -1,0 +1,49 @@
+---
+import { navItems } from './constants';
+import OptimizedImage from './OptimizedImage.astro';
+import type { StudioData } from './types';
+
+interface Props {
+  studio: StudioData;
+}
+
+const { studio } = Astro.props;
+---
+
+<header class="sticky top-0 z-40 border-b border-white/8 bg-[#0b0b0f]/78 backdrop-blur-xl">
+  <div class="container mx-auto flex max-w-6xl flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
+    <a href="#top" class="inline-flex items-center gap-3 no-underline">
+      <OptimizedImage
+        src={studio.logo}
+        alt={`${studio.title} logo`}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        widths={[64, 96, 128]}
+        sizes="48px"
+        class="h-12 w-12 rounded-xl object-contain"
+      />
+      <span class="grid leading-none">
+        <span class="text-sm font-black uppercase tracking-[0.32em] text-white">Fenroar Games</span>
+        <span class="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white/42">{studio.tagline}</span>
+      </span>
+    </a>
+
+    <nav class="flex flex-wrap gap-x-5 gap-y-2 text-[0.72rem] font-black uppercase tracking-[0.26em] text-white/58 sm:text-xs">
+      {navItems.map((item) => (
+        <a href={item.href} class="transition duration-300 hover:text-[#d4af37]">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="https://discord.gg/vPKjWEBFBq"
+      target="_blank"
+      rel="noreferrer"
+      class="inline-flex min-h-11 items-center justify-center rounded-full border border-[#d4af37]/30 bg-[#d4af37] px-5 text-sm font-black uppercase tracking-[0.18em] text-black transition duration-300 hover:scale-[1.03] hover:bg-[#e3c15b]"
+    >
+      Join Discord
+    </a>
+  </div>
+</header>

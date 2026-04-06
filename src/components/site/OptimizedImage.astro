@@ -1,0 +1,39 @@
+---
+import { Image, type ImageMetadata } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  decoding?: 'async' | 'auto' | 'sync';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  sizes?: string;
+  widths?: number[];
+  quality?: number;
+}
+
+const {
+  src,
+  alt,
+  class: className,
+  loading = 'lazy',
+  decoding = 'async',
+  fetchpriority = 'auto',
+  sizes,
+  widths,
+  quality = 82
+} = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  class={className}
+  loading={loading}
+  decoding={decoding}
+  fetchpriority={fetchpriority}
+  sizes={sizes}
+  widths={widths}
+  quality={quality}
+/>

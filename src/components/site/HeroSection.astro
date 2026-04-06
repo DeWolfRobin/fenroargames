@@ -1,0 +1,81 @@
+---
+import { gameTags } from './constants';
+import { Button, Pill, Reveal, Surface } from './SitePrimitives';
+import OptimizedImage from './OptimizedImage.astro';
+import type { GameData, StudioData } from './types';
+
+interface Props {
+  studio: StudioData;
+  game: GameData;
+}
+
+const { studio, game } = Astro.props;
+const primaryPreview = game.screenshots[2];
+---
+
+<section id="top" class="relative min-h-screen scroll-mt-28 overflow-hidden">
+  <div class="hero-parallax pointer-events-none absolute inset-0 opacity-70"></div>
+  <div class="container relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-24 text-center">
+    <Reveal className="space-y-8" delay={40}>
+      <div class="mx-auto flex w-fit items-center gap-4 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 backdrop-blur">
+        <OptimizedImage
+          src={studio.logo}
+          alt={`${studio.title} logo`}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          widths={[64, 96, 128]}
+          sizes="48px"
+          class="h-12 w-12 rounded-xl object-contain"
+        />
+        <span class="text-sm font-black uppercase tracking-[0.32em] text-white/72">{studio.title}</span>
+      </div>
+
+      <div class="space-y-4">
+        <p class="text-sm font-black uppercase tracking-[0.4em] text-cyan-300">{studio.tagline}</p>
+        <h1 class="mx-auto max-w-5xl text-5xl font-black leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          {studio.heroTitle}
+        </h1>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <Button href="https://discord.gg/vPKjWEBFBq">Join Discord</Button>
+        <Button href={game.playLink} variant="secondary">
+          Play on itch.io
+        </Button>
+        <Button href="https://www.youtube.com/@FenroarGames" variant="secondary">
+          Follow Dev
+        </Button>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {gameTags.map((tag) => (
+          <Pill invert>{tag}</Pill>
+        ))}
+      </div>
+    </Reveal>
+
+    <Reveal className="mt-12 w-full max-w-4xl" delay={140}>
+      <Surface tone="dark" className="hero-card relative overflow-hidden border-white/12 p-4">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_32%),radial-gradient(circle_at_100%_50%,rgba(72,196,255,0.16),transparent_30%)]"></div>
+        <div class="relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#090b10]">
+          <OptimizedImage
+            src={primaryPreview.src}
+            alt={primaryPreview.alt}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            widths={[720, 1080, 1440]}
+            sizes="(min-width: 1024px) 66vw, 100vw"
+            quality={84}
+            class="aspect-[16/8.8] w-full object-cover opacity-92"
+          />
+          <div class="absolute inset-x-4 bottom-4 mx-auto max-w-2xl rounded-[1rem] border border-white/10 bg-black/58 p-4 backdrop-blur">
+            <p class="text-[0.72rem] font-black uppercase tracking-[0.32em] text-[#d4af37]">{game.title}</p>
+            <p class="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">{studio.tagline}</p>
+          </div>
+        </div>
+      </Surface>
+    </Reveal>
+  </div>
+</section>

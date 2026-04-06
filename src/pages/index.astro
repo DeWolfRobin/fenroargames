@@ -1,0 +1,10 @@
+---
+import StudioSite from '../components/site/StudioSite.astro';
+import Layout from '../layouts/Layout.astro';
+import { game, projects, schema, socialGroups, studio } from '../data/site';
+---
+
+<Layout title="FenroarGames | Dice? No Dice! Playable Alpha" description={studio.description}>
+	<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	<StudioSite studio={studio} game={game} projects={projects} socialGroups={socialGroups} />
+</Layout>

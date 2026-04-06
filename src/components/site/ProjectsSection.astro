@@ -1,0 +1,51 @@
+---
+import { Reveal, SectionHeading } from './SitePrimitives';
+import OptimizedImage from './OptimizedImage.astro';
+import type { ProjectCard } from './types';
+
+interface Props {
+  projects: ProjectCard[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section id="projects" class="section-chunk container mx-auto max-w-6xl px-6 py-24">
+  <Reveal>
+    <SectionHeading eyebrow="Other Projects" title="Multiple worlds. Same system-first DNA." invert text="Current game plus future directions, without overexplaining." />
+  </Reveal>
+
+  <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    {projects.map((project, index) => (
+      <Reveal delay={index * 70}>
+        <a
+          href={project.href ?? '#'}
+          class="group block rounded-[1.7rem] border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:scale-105 hover:border-[#d4af37]/35 hover:bg-white/[0.06] hover:shadow-[0_24px_80px_rgba(0,0,0,0.34)]"
+        >
+          <div class="relative overflow-hidden rounded-[1.2rem] border border-white/8 bg-[#090b10]">
+            <OptimizedImage
+              src={project.visual.src}
+              alt={project.visual.alt}
+              loading="lazy"
+              decoding="async"
+              widths={[420, 720, 960]}
+              sizes="(min-width: 1280px) 30vw, (min-width: 768px) 48vw, 100vw"
+              quality={78}
+              class="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.04]"
+            />
+            <div class="absolute inset-x-3 top-3 flex justify-between gap-3">
+              <span class="rounded-full border border-white/12 bg-black/50 px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.24em] text-cyan-300">
+                {project.status}
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-2">
+            <p class="text-xs font-black uppercase tracking-[0.28em] text-[#d4af37]">{project.descriptor}</p>
+            <h3 class="text-3xl font-black tracking-tight text-white">{project.title}</h3>
+          </div>
+        </a>
+      </Reveal>
+    ))}
+  </div>
+</section>

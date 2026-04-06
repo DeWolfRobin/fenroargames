@@ -1,0 +1,27 @@
+---
+import GalleryCarousel from './GalleryCarousel.astro';
+import { Reveal, SectionHeading, Surface } from './SitePrimitives';
+import type { GameData } from './types';
+
+interface Props {
+  game: GameData;
+}
+
+const { game } = Astro.props;
+---
+
+<section id="gallery" class="section-chunk scroll-mt-28 py-8 lg:py-14">
+  <Reveal>
+    <SectionHeading
+      eyebrow="Gallery"
+      title="A playable alpha presented like a product reveal"
+      text="The page now moves through the game in chapters, while the gallery still gives visitors a direct look at the current build."
+    />
+  </Reveal>
+
+  <Reveal delay={120}>
+    <Surface className="mt-8 p-5 sm:p-6">
+      <GalleryCarousel title={game.title} images={game.screenshots} />
+    </Surface>
+  </Reveal>
+</section>
