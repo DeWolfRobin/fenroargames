@@ -1,5 +1,5 @@
 ---
-import { game, studio } from '../data/site';
+import { game } from '../data/site';
 import '../styles/global.css';
 
 interface Props {
@@ -17,8 +17,9 @@ const { title, description, canonical, keywords = [] } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" href="/fenroargames.png" />
+		<link rel="shortcut icon" type="image/png" href="/fenroargames.png" />
+		<link rel="apple-touch-icon" href="/fenroargames.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		{keywords.length ? <meta name="keywords" content={keywords.join(', ')} /> : null}
@@ -37,7 +38,6 @@ const { title, description, canonical, keywords = [] } = Astro.props;
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={game.screenshots[2].src.src} />
 		{canonical ? <link rel="canonical" href={canonical} /> : null}
-		<link rel="icon" type="image/png" href={studio.logo.src} />
 		<title>{title}</title>
 	</head>
 	<body>
