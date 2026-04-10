@@ -40,7 +40,7 @@ const gamePageSchema = {
 
 const pageTitle = 'Dice? No Dice! | Roguelike Dice Defense Game by FenroarGames';
 const pageDescription =
-  'Dice? No Dice! is a playable alpha roguelike by FenroarGames with tense lane defense, risky rolls, and runs that keep changing on you.';
+  'Dice? No Dice! Alpha 0.0.2 is a playable roguelike by FenroarGames with multi-lane defense, defender classes, progression unlocks, and risky rolls.';
 
 const seoKeywords = [
   'Dice? No Dice!',
@@ -81,14 +81,14 @@ const seoKeywords = [
               </div>
 
               <div class="space-y-4">
-                <p class="text-sm font-black uppercase tracking-[0.36em] text-cyan-300">Playable Alpha</p>
+                <p class="text-sm font-black uppercase tracking-[0.36em] text-cyan-300">Alpha 0.0.2</p>
                 <h1 class="max-w-4xl text-4xl font-black leading-[0.92] tracking-tight text-white sm:text-6xl lg:text-7xl">
                   Dice? No Dice!
                 </h1>
                 <p class="max-w-3xl text-lg leading-8 text-zinc-300">
                   If you like runs that go from calm to chaotic in a heartbeat, <strong>Dice? No Dice!</strong> is built
                   for that feeling. Jump into a lane defense roguelike where every roll can save a run or blow it wide
-                  open.
+                  open. The latest update adds defender classes, multi-lane pressure, and the first progression layer.
                 </p>
               </div>
 
@@ -124,7 +124,7 @@ const seoKeywords = [
         <section class={sectionContainerClass}>
           <SectionHeading
             eyebrow="About The Game"
-            title="Fast to read. Hard to put down."
+            title="Simple to learn, tense to master"
             text="Dice? No Dice! is easy to understand at a glance, but every wave asks for smarter positioning, better timing, and a little courage."
             invert
           />
@@ -178,9 +178,47 @@ const seoKeywords = [
 
         <section class={sectionContainerClass}>
           <SectionHeading
+            eyebrow="Latest Update"
+            title="Alpha 0.0.2 is live"
+            text="This release expands the core loop with lane decisions, class identity, stronger combat outcomes, and first-pass progression."
+            invert
+          />
+
+          <div class="mt-12 grid gap-5 lg:grid-cols-2">
+            <Surface class="p-6">
+              <p class="text-xs font-black uppercase tracking-[0.28em] text-cyan-300">New Features</p>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-7 text-zinc-200 marker:text-cyan-300">
+                <li>Multi-lane enemy paths with tactical defender placement every round.</li>
+                <li>Three defender classes: Warrior, Archer, and Mage.</li>
+                <li>Optional tutorial accessible anytime from the main menu.</li>
+                <li>Progression unlocks for defenders, modifiers, and upgrades.</li>
+                <li>Expanded pools: 20+ modifiers and 14 upgrades with rarity tiers.</li>
+                <li>Second boss added, with mixed boss + normal waves from round 8 onward.</li>
+                <li>Sound effects, background music, volume controls, and the first original main theme.</li>
+                <li>New round indicators, boss indicators, and resume screen support.</li>
+              </ul>
+            </Surface>
+
+            <Surface class="p-6">
+              <p class="text-xs font-black uppercase tracking-[0.28em] text-cyan-300">Combat + Fixes</p>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-7 text-zinc-200 marker:text-cyan-300">
+                <li>Natural 20 now deals critical hit damage (double damage).</li>
+                <li>Natural 1 now forces a critical miss and ignores attack bonus.</li>
+                <li>Fixed defenders getting stuck during multi-wave rounds.</li>
+                <li>Fixed freezes from starting new runs repeatedly from pause.</li>
+                <li>Fixed tutorial breakage when restarting from pause.</li>
+                <li>Fixed stat hover clipping with dynamic repositioning.</li>
+                <li>Fixed boss spawning override that blocked normal enemy waves.</li>
+              </ul>
+            </Surface>
+          </div>
+        </section>
+
+        <section class={sectionContainerClass}>
+          <SectionHeading
             eyebrow="Screenshots"
-            title="A look at the current alpha"
-            text="Here is what Dice? No Dice! looks like right now, from setup to upgrades to the moments when the board starts getting dangerous."
+            title="Alpha 0.0.2 promotional screenshots"
+            text="Latest in-game captures from the new release, including updated lane pressure, class playstyles, and progression-focused runs."
             invert
           />
 
@@ -197,7 +235,6 @@ const seoKeywords = [
                   quality={82}
                   class="aspect-[16/10] w-full rounded-[1.2rem] object-cover"
                 />
-                <p class="px-2 pb-2 pt-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/72">{image.caption}</p>
               </Surface>
             ))}
           </div>

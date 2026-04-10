@@ -1,8 +1,10 @@
 import logo from '../assets/site/FenroarGames_logo_320.png';
-import screenshot1 from '../assets/site/1.png';
-import screenshot2 from '../assets/site/2.png';
-import screenshot3 from '../assets/site/3.png';
-import screenshot4 from '../assets/site/4.png';
+import screenshot1 from '../assets/site/dice-no-dice-alpha-002-01.png';
+import screenshot2 from '../assets/site/dice-no-dice-alpha-002-02.png';
+import screenshot3 from '../assets/site/dice-no-dice-alpha-002-03.png';
+import screenshot4 from '../assets/site/dice-no-dice-alpha-002-04.png';
+import screenshot5 from '../assets/site/dice-no-dice-alpha-002-05.png';
+import screenshot6 from '../assets/site/dice-no-dice-alpha-002-06.png';
 import projectPlaceholder from '../assets/site/project-placeholder.svg';
 import type { GameData, ProjectCard, SocialGroup, StudioData } from '../components/site/shared/types';
 
@@ -10,7 +12,7 @@ export const studio: StudioData = {
 	title: 'FenroarGames',
 	tagline: 'Systems built to bite back',
 	description:
-		'FenroarGames is an indie game studio focused on strategy games with self-composed music and collaborative art production. Discover Dice? No Dice!, a playable alpha roguelike dice defense game.',
+		'FenroarGames is an indie game studio focused on strategy games with self-composed music and collaborative art production. Discover Dice? No Dice! Alpha 0.0.2, a playable roguelike dice defense game.',
 	heroTitle: 'Strategy games with pressure, replayability, and authored feel.',
 	identityStatements: ['System-driven games', 'Replayability first', 'Design through mechanics'],
 	philosophy: ['Mechanics over fluff', 'Clarity over complexity', 'Systems that evolve', 'Readable pressure, meaningful risk'],
@@ -40,47 +42,49 @@ export const socialGroups: SocialGroup[] = [
 
 export const game: GameData = {
 	title: 'Dice? No Dice!',
-	subtitle: 'Roguelike Dice Defense Game',
-	status: 'Playable Alpha',
+	subtitle: 'Alpha 0.0.2 - Roguelike Dice Defense Game',
+	status: 'Alpha 0.0.2 Live',
 	shortDescription:
-		'Dice? No Dice! is a roguelike dice defense game where positioning, upgrades, and risky rolls shape every run. Choose your lane, adapt to enemy paths, and survive increasingly difficult waves.',
+		'Dice? No Dice! is a roguelike dice defense game where multi-lane positioning, class-based defenders, upgrades, and risky rolls shape every run. Choose your lane, adapt to enemy spawns, and survive escalating waves.',
 	alphaNote:
-		'The current build is a playable alpha. The art and music are still temporary while the final visual direction and original soundtrack continue to take shape.',
+		'Alpha 0.0.2 is playable now with a first progression layer, expanded modifiers and upgrades, and new audio. Most visuals and sound effects are still placeholders while final assets continue to take shape.',
 	featureSteps: [
 		{
-			label: 'Core loop',
-			title: 'Place, defend, survive',
-			description: 'Set defenders, hold lanes, and stretch each run one wave further.',
-			visualTitle: 'Core loop',
-			visualNote: 'Lane defense under pressure'
+			label: 'Multi-lane pressure',
+			title: 'Read spawns and cover the right lane',
+			description: 'Enemies can now appear across multiple lanes, so each placement choice matters from round to round.',
+			visualTitle: 'Lane system',
+			visualNote: 'Pressure shifts every wave'
 		},
 		{
-			label: 'Dice mechanic',
-			title: 'Roll for power spikes',
-			description: 'Dice outcomes push your build into safer lines or risky pivots.',
-			visualTitle: 'Dice system',
-			visualNote: 'Chance reshapes the run'
+			label: 'Defender classes',
+			title: 'Warrior, Archer, and Mage play differently',
+			description: 'Pick durable frontline control, balanced lane coverage, or full-field range and build around that strength.',
+			visualTitle: 'Class choice',
+			visualNote: 'Different role, different run'
 		},
 		{
-			label: 'Strategy layer',
-			title: 'Read paths, place with intent',
-			description: 'Pathing and positioning decide whether a lane stabilizes or collapses.',
-			visualTitle: 'Placement',
-			visualNote: 'Every tile matters'
+			label: 'Progression layer',
+			title: 'Unlock defenders, modifiers, and upgrades',
+			description: 'Longer-term unlocks now carry across runs and add more goals beyond a single attempt.',
+			visualTitle: 'Progression',
+			visualNote: 'More to chase between runs'
 		},
 		{
-			label: 'Variation',
-			title: 'Classes and modifiers stack differently',
-			description: 'Class roles, modifiers, and upgrades keep each attempt structurally different.',
-			visualTitle: 'Variation',
-			visualNote: 'New runs, new pressure'
+			label: 'Combat and bosses',
+			title: 'Crits hit harder, bosses push mixed waves',
+			description: 'Natural 20 and natural 1 outcomes are now decisive, and bosses from round 8 can appear alongside normal enemies.',
+			visualTitle: 'Escalation',
+			visualNote: 'Bigger swings, heavier rounds'
 		}
 	],
 	screenshots: [
-		{ src: screenshot1, alt: 'Dice No Dice title screen', caption: 'Title screen' },
-		{ src: screenshot2, alt: 'Dice No Dice modifier selection screen', caption: 'Modifier selection' },
-		{ src: screenshot3, alt: 'Dice No Dice lane combat gameplay', caption: 'Combat snapshot' },
-		{ src: screenshot4, alt: 'Dice No Dice upgrade screen', caption: 'Between-wave upgrades' }
+		{ src: screenshot1, alt: 'Dice No Dice alpha 0.0.2 gameplay showing updated lane combat', caption: 'Alpha 0.0.2 gameplay' },
+		{ src: screenshot2, alt: 'Dice No Dice alpha 0.0.2 defender and lane interface', caption: 'Lane placement decisions' },
+		{ src: screenshot3, alt: 'Dice No Dice alpha 0.0.2 round with enemy pressure across lanes', caption: 'Multi-lane pressure' },
+		{ src: screenshot4, alt: 'Dice No Dice alpha 0.0.2 build and progression interface', caption: 'Progression and build choices' },
+		{ src: screenshot5, alt: 'Dice No Dice alpha 0.0.2 combat encounter with upgraded UI', caption: 'Combat and round indicators' },
+		{ src: screenshot6, alt: 'Dice No Dice alpha 0.0.2 interface showing active run state', caption: 'Current run overview' }
 	],
 	playLink: 'https://fenroargames.itch.io/dice-no-dice'
 };
@@ -89,7 +93,7 @@ export const projects: ProjectCard[] = [
 	{
 		title: 'Dice? No Dice!',
 		descriptor: 'Dice defense alpha',
-		status: 'Playable now',
+		status: 'Alpha 0.0.2 live',
 		visual: game.screenshots[2],
 		href: '/dice-no-dice/'
 	},
